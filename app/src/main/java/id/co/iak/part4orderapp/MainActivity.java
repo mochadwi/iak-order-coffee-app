@@ -14,8 +14,8 @@ public class MainActivity extends AppCompatActivity {
     // Views
     private EditText edtName;
     private TextView txtQuantity;
-    private CheckBox cbToppingWhippedCream;
-    private CheckBox cbToppingCream;
+    private CheckBox cbTopWcream;
+    private CheckBox cbTopChoco;
     private Button btnIncrement;
     private Button btnDecrement;
     private Button btnOrder;
@@ -41,8 +41,8 @@ public class MainActivity extends AppCompatActivity {
     private void initView() {
         edtName = (EditText) findViewById(R.id.edt_name);
         txtQuantity = (TextView) findViewById(R.id.txt_quantity);
-        cbToppingWhippedCream = (CheckBox) findViewById(R.id.cb_whippedcream);
-        cbToppingCream = (CheckBox) findViewById(R.id.cb_cream);
+        cbTopWcream = (CheckBox) findViewById(R.id.cb_wc);
+        cbTopChoco = (CheckBox) findViewById(R.id.cb_cho);
         btnIncrement = (Button) findViewById(R.id.btn_add);
         btnDecrement = (Button) findViewById(R.id.btn_substract);
         btnOrder = (Button) findViewById(R.id.btn_order);
@@ -124,19 +124,31 @@ public class MainActivity extends AppCompatActivity {
      * @return summary of order
      */
     private String createOrderSummary(String name, int quantity, int price) {
-        String topping = "";
-        if (cbToppingWhippedCream.isChecked()) {
-            topping = "Whipped Cream";
-        } else if (cbToppingCream.isChecked()) {
-            topping = "Cream";
-        } else {
-            topping = "No Topping";
-        }
-
         return "Name: " + name +
-                "\nTopping: " + topping +
+                "\nAdd whipped cream? " + isWhippedCreamChecked() +
+                "\nAdd chocolate? " + isChocolateChecked() +
                 "\nQuantity: " + quantity +
                 "\nTotal: $" + price +
                 "\nThank You!";
+    }
+
+    /**
+     * This method will check
+     * for whipped cream topping state
+     *
+     * @return true if checked
+     */
+    private boolean isWhippedCreamChecked() {
+        return cbTopWcream.isChecked();
+    }
+
+    /**
+     * This method will check
+     * for chocolate topping state
+     *
+     * @return true if checked
+     */
+    private boolean isChocolateChecked() {
+        return cbTopChoco.isChecked();
     }
 }

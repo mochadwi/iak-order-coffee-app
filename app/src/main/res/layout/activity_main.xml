@@ -14,6 +14,7 @@
         android:id="@+id/edt_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:hint="Your Name" />
 
     <TextView
@@ -21,28 +22,61 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/edt_name"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:text="Toppings" />
 
-    <android.support.v7.widget.AppCompatCheckBox
-        android:id="@+id/cb_whippedcream"
+    <CheckBox
+        android:id="@+id/cb_wc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/txt_desc_topping"
-        android:text="Whipped Cream" />
+        android:layout_marginRight="24dp" />
 
-    <android.support.v7.widget.AppCompatCheckBox
-        android:id="@+id/cb_cream"
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/cb_whippedcream"
-        android:text="Cream" />
+        android:layout_below="@id/txt_desc_topping"
+        android:layout_marginTop="8dp"
+        android:layout_toRightOf="@id/cb_wc"
+        android:text="Whipped Cream"
+        android:textSize="16sp" />
+
+    <CheckBox
+        android:id="@+id/cb_cho"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cb_wc"
+        android:layout_marginRight="24dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cb_wc"
+        android:layout_marginTop="8dp"
+        android:layout_toRightOf="@id/cb_cho"
+        android:text="Chocolate"
+        android:textSize="16sp" />
+
+    <!--<android.support.v7.widget.AppCompatCheckBox-->
+    <!--android:id="@+id/cb_whippedcream"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_below="@id/txt_desc_topping"-->
+    <!--android:text="Whipped Cream" />-->
+
+    <!--<android.support.v7.widget.AppCompatCheckBox-->
+    <!--android:id="@+id/cb_cream"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_below="@id/cb_whippedcream"-->
+    <!--android:text="Cream" />-->
 
     <TextView
         android:id="@+id/txt_desc_quantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/cb_cream"
+        android:layout_below="@id/cb_cho"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:text="Quantity" />
 
@@ -80,6 +114,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/btn_substract"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:text="Price" />
 
