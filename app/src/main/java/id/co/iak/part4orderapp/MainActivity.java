@@ -12,6 +12,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView txtQuantity;
     private Button btnIncrement;
     private Button btnDecrement;
+    private Button btnOrder;
+    private TextView txtPrice;
 
     // Data
     private int quantity = 0;
@@ -31,8 +33,10 @@ public class MainActivity extends AppCompatActivity {
         txtQuantity = (TextView) findViewById(R.id.txt_quantity);
         btnIncrement = (Button) findViewById(R.id.btn_add);
         btnDecrement = (Button) findViewById(R.id.btn_substract);
+        btnOrder = (Button) findViewById(R.id.btn_order);
+        txtPrice = (TextView) findViewById(R.id.txt_price);
 
-        txtQuantity.setText(Integer.toString(quantity));
+        display(Integer.toString(quantity));
     }
 
     /**
@@ -59,10 +63,28 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * This method display the output messages
-     * @param message the string to output
+     * This method will count the price
      */
-    private void display(String message) {
-        txtQuantity.setText(message);
+    public void submitOrder(View v) {
+        int totalPrice = quantity * 10;
+        display(totalPrice);
+    }
+
+    /**
+     * This method display the output messages
+     *
+     * @param quantity the string to output
+     */
+    private void display(String quantity) {
+        txtQuantity.setText(quantity);
+    }
+
+    /**
+     * This method display the output messages
+     *
+     * @param price the string to output
+     */
+    private void display(int price) {
+        txtPrice.setText("Total: $" + price);
     }
 }

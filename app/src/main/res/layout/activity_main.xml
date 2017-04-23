@@ -14,12 +14,11 @@
         android:id="@+id/txt_desc_quantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Quantity"
-        android:textSize="32sp" />
+        android:text="Quantity" />
 
     <Button
         android:id="@+id/btn_substract"
-        android:layout_width="wrap_content"
+        android:layout_width="46dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/txt_desc_quantity"
         android:onClick="decrement"
@@ -30,17 +29,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/txt_desc_quantity"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:layout_marginTop="8dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="16dp"
         android:layout_toRightOf="@id/btn_substract"
         android:text="0"
-        android:textColor="#000"
-        android:textSize="32sp" />
+        android:textColor="#000" />
 
     <Button
         android:id="@+id/btn_add"
-        android:layout_width="wrap_content"
+        android:layout_width="46dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/txt_desc_quantity"
         android:layout_toRightOf="@id/txt_quantity"
@@ -53,8 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/btn_substract"
         android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:text="Price"
-        android:textSize="32sp" />
+        android:text="Price" />
 
     <TextView
         android:id="@+id/txt_price"
@@ -64,14 +61,14 @@
         android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:text="$10"
-        android:textColor="#000"
-        android:textSize="24sp" />
+        android:textColor="#000" />
 
     <Button
         android:id="@+id/btn_order"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/txt_price"
+        android:onClick="submitOrder"
         android:text="Order" />
 
 </RelativeLayout>
