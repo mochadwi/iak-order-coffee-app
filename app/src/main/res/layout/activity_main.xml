@@ -21,6 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/edt_name"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
         android:text="Toppings" />
 
     <android.support.v7.widget.AppCompatCheckBox
@@ -30,11 +31,19 @@
         android:layout_below="@id/txt_desc_topping"
         android:text="Whipped Cream" />
 
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/cb_cream"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cb_whippedcream"
+        android:text="Cream" />
+
     <TextView
         android:id="@+id/txt_desc_quantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/cb_whippedcream"
+        android:layout_below="@id/cb_cream"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
         android:text="Quantity" />
 
     <Button
@@ -67,44 +76,28 @@
         android:text="+" />
 
     <TextView
-        android:id="@+id/txt_descprice"
+        android:id="@+id/txt_desc_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/btn_substract"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:text="Price" />
 
     <TextView
-        android:id="@+id/txt_name"
+        android:id="@+id/txt_summary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/txt_descprice"
-        android:text="Name: John Doe"
-        android:textColor="#000" />
-
-    <TextView
-        android:id="@+id/txt_topping"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/txt_name"
-        android:text="Topping: "
-        android:textColor="#000" />
-
-    <TextView
-        android:id="@+id/txt_price"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/txt_topping"
-        android:text="Total: $10"
+        android:layout_below="@id/txt_desc_price"
+        android:text="$10"
         android:textColor="#000" />
 
     <Button
         android:id="@+id/btn_order"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/txt_price"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/txt_summary"
         android:onClick="submitOrder"
         android:text="Order" />
 

@@ -19,9 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btnOrder;
 
     // Output
-    private TextView txtName;
-    private TextView txtTopping;
-    private TextView txtPrice;
+    private TextView txtSummary;
 
     // Data
     private String topping = "";
@@ -41,12 +39,11 @@ public class MainActivity extends AppCompatActivity {
     private void initView() {
         edtName = (EditText) findViewById(R.id.edt_name);
         txtQuantity = (TextView) findViewById(R.id.txt_quantity);
+        cbToppingWhippedCream = (CheckBox) findViewById(R.id.cb_whippedcream);
         btnIncrement = (Button) findViewById(R.id.btn_add);
         btnDecrement = (Button) findViewById(R.id.btn_substract);
         btnOrder = (Button) findViewById(R.id.btn_order);
-        txtName = (TextView) findViewById(R.id.txt_name);
-        txtTopping = (TextView) findViewById(R.id.txt_topping);
-        txtPrice = (TextView) findViewById(R.id.txt_price);
+        txtSummary = (TextView) findViewById(R.id.txt_summary);
 
         displayQuantity(quantity);
     }
@@ -76,13 +73,23 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * This method will count the price
+     * @param v to bind the views from onclick event
      */
     public void submitOrder(View v) {
-        display(calculatePrice(quantity));
+        createOrderSummary(edtName.getText().toString(), quantity, calculatePrice());
+//        createOrderSummary("Nama Lengkap", quantity, calculatePrice(quantity));
     }
 
-    private int calculatePrice(int quantity) {
-        return quantity * 10;
+    private int calculatePrice(int qty) {
+        return qty * 5;
+    }
+
+    private int calculatePrice(int qty, int initPrice) {
+        return qty * initPrice;
+    }
+
+    private int calculatePrice() {
+        return quantity * 5;
     }
 
     /**
@@ -95,12 +102,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * This method display the output messages
+     * This method displays order summary
      *
-     * @param price the string to output
+     * @param name     user defined name
+     * @param quantity of ordered coffee
+     * @param price    of total coffee ordered
      */
-    private void display(int price) {
-        txtName.setText("Name: " + edtName.getText().toString());
-   if (cbToppingWhippedCream.isChecked()) txtTopping.setText("Whipped Cream");     txtPrice.setText("Total: $" + price);
+    private void createOrderSummary(String name, int quantity, int price) {
+        txtSummary.setText("Name: " + name +
+                "\nQuantity: " + quantity +
+                "\nTotal: $" + price +
+                "\nThank You!");
+//        if (cbToppingWhippedCream.isChecked()) {
+//            txtTopping.setText("Topping: Whipped Cream");
+//        } else
+//        {
+//            txtTopping.setText("Topping: ");
+//        }
+
     }
 }
