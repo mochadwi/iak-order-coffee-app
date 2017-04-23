@@ -17,10 +17,24 @@
         android:hint="Your Name" />
 
     <TextView
-        android:id="@+id/txt_desc_quantity"
+        android:id="@+id/txt_desc_topping"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/edt_name"
+        android:text="Toppings" />
+
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/cb_whippedcream"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txt_desc_topping"
+        android:text="Whipped Cream" />
+
+    <TextView
+        android:id="@+id/txt_desc_quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cb_whippedcream"
         android:text="Quantity" />
 
     <Button
@@ -70,10 +84,18 @@
         android:textColor="#000" />
 
     <TextView
-        android:id="@+id/txt_price"
+        android:id="@+id/txt_topping"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/txt_name"
+        android:text="Topping: "
+        android:textColor="#000" />
+
+    <TextView
+        android:id="@+id/txt_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txt_topping"
         android:text="Total: $10"
         android:textColor="#000" />
 

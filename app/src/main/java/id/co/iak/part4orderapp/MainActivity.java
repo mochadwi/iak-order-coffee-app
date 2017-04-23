@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -12,13 +13,18 @@ public class MainActivity extends AppCompatActivity {
     // Views
     private EditText edtName;
     private TextView txtQuantity;
+    private CheckBox cbToppingWhippedCream;
     private Button btnIncrement;
     private Button btnDecrement;
     private Button btnOrder;
+
+    // Output
     private TextView txtName;
+    private TextView txtTopping;
     private TextView txtPrice;
 
     // Data
+    private String topping = "";
     private int quantity = 0;
 
     @Override
@@ -39,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         btnDecrement = (Button) findViewById(R.id.btn_substract);
         btnOrder = (Button) findViewById(R.id.btn_order);
         txtName = (TextView) findViewById(R.id.txt_name);
+        txtTopping = (TextView) findViewById(R.id.txt_topping);
         txtPrice = (TextView) findViewById(R.id.txt_price);
 
         displayQuantity(quantity);
@@ -94,6 +101,6 @@ public class MainActivity extends AppCompatActivity {
      */
     private void display(int price) {
         txtName.setText("Name: " + edtName.getText().toString());
-        txtPrice.setText("Total: $" + price);
+   if (cbToppingWhippedCream.isChecked()) txtTopping.setText("Whipped Cream");     txtPrice.setText("Total: $" + price);
     }
 }
