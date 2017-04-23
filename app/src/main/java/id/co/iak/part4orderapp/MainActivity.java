@@ -4,15 +4,18 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
     // Views
+    private EditText edtName;
     private TextView txtQuantity;
     private Button btnIncrement;
     private Button btnDecrement;
     private Button btnOrder;
+    private TextView txtName;
     private TextView txtPrice;
 
     // Data
@@ -30,13 +33,15 @@ public class MainActivity extends AppCompatActivity {
      * This method initiate the views
      */
     private void initView() {
+        edtName = (EditText) findViewById(R.id.edt_name);
         txtQuantity = (TextView) findViewById(R.id.txt_quantity);
         btnIncrement = (Button) findViewById(R.id.btn_add);
         btnDecrement = (Button) findViewById(R.id.btn_substract);
         btnOrder = (Button) findViewById(R.id.btn_order);
+        txtName = (TextView) findViewById(R.id.txt_name);
         txtPrice = (TextView) findViewById(R.id.txt_price);
 
-        display(Integer.toString(quantity));
+        displayQuantity(quantity);
     }
 
     /**
@@ -46,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void increment(View v) {
         quantity++;
-        display(Integer.toString(quantity));
+        displayQuantity(quantity);
     }
 
     /**
@@ -59,15 +64,18 @@ public class MainActivity extends AppCompatActivity {
         if (quantity < 0) {
             quantity = 0;
         }
-        display(Integer.toString(quantity));
+        displayQuantity(quantity);
     }
 
     /**
      * This method will count the price
      */
     public void submitOrder(View v) {
-        int totalPrice = quantity * 10;
-        display(totalPrice);
+        display(calculatePrice(quantity));
+    }
+
+    private int calculatePrice(int quantity) {
+        return quantity * 10;
     }
 
     /**
@@ -75,8 +83,8 @@ public class MainActivity extends AppCompatActivity {
      *
      * @param quantity the string to output
      */
-    private void display(String quantity) {
-        txtQuantity.setText(quantity);
+    private void displayQuantity(int quantity) {
+        txtQuantity.setText("" + quantity);
     }
 
     /**
@@ -85,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
      * @param price the string to output
      */
     private void display(int price) {
+        txtName.setText("Name: " + edtName.getText().toString());
         txtPrice.setText("Total: $" + price);
     }
 }
