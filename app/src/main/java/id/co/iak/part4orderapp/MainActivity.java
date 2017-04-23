@@ -1,5 +1,6 @@
 package id.co.iak.part4orderapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -14,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText edtName;
     private TextView txtQuantity;
     private CheckBox cbToppingWhippedCream;
+    private CheckBox cbToppingCream;
     private Button btnIncrement;
     private Button btnDecrement;
     private Button btnOrder;
@@ -40,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         edtName = (EditText) findViewById(R.id.edt_name);
         txtQuantity = (TextView) findViewById(R.id.txt_quantity);
         cbToppingWhippedCream = (CheckBox) findViewById(R.id.cb_whippedcream);
+        cbToppingCream = (CheckBox) findViewById(R.id.cb_cream);
         btnIncrement = (Button) findViewById(R.id.btn_add);
         btnDecrement = (Button) findViewById(R.id.btn_substract);
         btnOrder = (Button) findViewById(R.id.btn_order);
@@ -73,11 +76,22 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * This method will count the price
+     *
      * @param v to bind the views from onclick event
      */
     public void submitOrder(View v) {
-        createOrderSummary(edtName.getText().toString(), quantity, calculatePrice());
+        txtSummary.setText(createOrderSummary(edtName.getText().toString(),
+                quantity, calculatePrice()));
 //        createOrderSummary("Nama Lengkap", quantity, calculatePrice(quantity));
+        Intent send = new Intent();
+        send.setAction(Intent.ACTION_SEND);
+        send.putExtra(Intent.EXTRA_TEXT, createOrderSummary(edtName.getText().toString(),
+                quantity, calculatePrice()));
+        send.setType("text/plain");
+
+        if (send.resolveActivity(getPackageManager()) != null) {
+            startActivity(send);
+        }
     }
 
     private int calculatePrice(int qty) {
@@ -107,18 +121,22 @@ public class MainActivity extends AppCompatActivity {
      * @param name     user defined name
      * @param quantity of ordered coffee
      * @param price    of total coffee ordered
+     * @return summary of order
      */
-    private void createOrderSummary(String name, int quantity, int price) {
-        txtSummary.setText("Name: " + name +
+    private String createOrderSummary(String name, int quantity, int price) {
+        String topping = "";
+        if (cbToppingWhippedCream.isChecked()) {
+            topping = "Whipped Cream";
+        } else if (cbToppingCream.isChecked()) {
+            topping = "Cream";
+        } else {
+            topping = "No Topping";
+        }
+
+        return "Name: " + name +
+                "\nTopping: " + topping +
                 "\nQuantity: " + quantity +
                 "\nTotal: $" + price +
-                "\nThank You!");
-//        if (cbToppingWhippedCream.isChecked()) {
-//            txtTopping.setText("Topping: Whipped Cream");
-//        } else
-//        {
-//            txtTopping.setText("Topping: ");
-//        }
-
+                "\nThank You!";
     }
 }
